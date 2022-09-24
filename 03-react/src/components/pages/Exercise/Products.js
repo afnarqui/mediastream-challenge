@@ -11,17 +11,18 @@ const Products = () => {
     const exists = state.cart.filter((item) => item.id === product.id)
     if (exists.length === 0) {
       addToCart(product)
+      console.log('cart', state.cart)
     } else {
       alert('the product already exists in the cart')
     }
   }
 
   return (
-    <>
-        {products.map(product => (
-          <Product key={product.id} product={product} handleAddToCart={handleAddToCart} />
-        ))}
-    </>
+     <>
+      {products.map(product => (
+        <Product key={product.id} product={product} handleAddToCart={handleAddToCart} />
+      ))}
+     </>
   )
 }
 

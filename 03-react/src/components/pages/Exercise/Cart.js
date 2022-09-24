@@ -1,12 +1,13 @@
 import React, { useContext } from 'react'
 import AppContext from '../../../context/AppContext'
 import './assets/styles.css'
+import { v4 as uuidv4 } from 'uuid'
 
 const Cart = () => {
-  const { state, removeFromCart } = useContext(AppContext)
+  const { state, removeFromCart, addToCart, removeCartAll } = useContext(AppContext)
   const { cart } = state
-
-  const handleRemove = product => () => {
+  const handleRemove = (product) => {
+    console.log('product', state)
     removeFromCart(product)
   }
 
@@ -16,15 +17,28 @@ const Cart = () => {
     return sum
   }
 
-  const incrementQuantity = (o) => {
-
+  const incrementQuantity = (product) => {
+    const newCartItems = state.cart.filter((x) => x.id === product.id)
+    console.log('newC', state)
+    newCartItems[0].count = newCartItems[0].count + 1
+    const exists = state.cart.filter((x) => x.id !== product.id)
+    if (exists.length > 0) {
+      removeCartAll()
+      addToCart(newCartItems)
+      addToCart(exists)
+    } else {
+      addToCart(newCartItems)
+    }
+    console.log('newCartItems', newCartItems)
+    console.log('exists', exists)
+    console.log('product', state)
   }
 
   return (
     <div className="movies__cart">
     <ul>
-      {cart.map(x => (
-        <li key={x.id} className="movies__cart-card">
+      {state.cart.map(x => (
+        <li key={uuidv4()} className="movies__cart-card">
           <ul>
             <li>
               ID: {x.id}
@@ -41,7 +55,7 @@ const Cart = () => {
               -
             </button>
             <span>
-              {x.quantity}
+              {x.count}
             </span>
             <button onClick={() => incrementQuantity(x)}>
               +

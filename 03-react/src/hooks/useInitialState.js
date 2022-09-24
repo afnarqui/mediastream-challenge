@@ -11,6 +11,12 @@ const useInitialState = () => {
     })
   }
 
+  const removeCartAll = payload => {
+    setState({
+      cart: []
+    })
+  }
+
   const removeFromCart = payload => {
     setState({
       ...state,
@@ -21,6 +27,7 @@ const useInitialState = () => {
   return {
     addToCart,
     removeFromCart,
+    removeCartAll,
     state
   }
 }

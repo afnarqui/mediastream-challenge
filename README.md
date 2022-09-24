@@ -1,5 +1,28 @@
 # Mediastream challenge
 
+# developing
+```` bash
+npm run 1
+````
+
+![node](https://res.cloudinary.com/drqk6qzo7/image/upload/v1664060794/npm-run-1_jpam7g.png)
+
+```` bash
+npm run 2
+````
+
+![node](https://res.cloudinary.com/drqk6qzo7/image/upload/v1664060922/npm-run-2_1_bvgdx6.png)
+
+![node](https://res.cloudinary.com/drqk6qzo7/image/upload/v1664060950/npm_-run-2_2_ifwgwt.png)
+
+
+```` bash
+npm run 3
+````
+
+![react](https://res.cloudinary.com/drqk6qzo7/image/upload/v1664061000/npm-run-3_2_ea84ut.png)
+
+
 ## Requisites
 
 * [Node.js 14.x](https://nodejs.org/en/)
