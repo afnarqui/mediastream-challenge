@@ -20,7 +20,7 @@ npm run 2
 npm run 3
 ````
 
-![react](https://res.cloudinary.com/drqk6qzo7/image/upload/v1664061000/npm-run-3_2_ea84ut.png)
+![react](https://res.cloudinary.com/drqk6qzo7/image/upload/v1664072499/npm-run-3_3_ix6qgh.png)
 
 
 ## Requisites

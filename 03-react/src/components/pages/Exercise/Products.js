@@ -11,7 +11,6 @@ const Products = () => {
     const exists = state.cart.filter((item) => item.id === product.id)
     if (exists.length === 0) {
       addToCart(product)
-      console.log('cart', state.cart)
     } else {
       alert('the product already exists in the cart')
     }
