@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import AppContext from '../../../context/AppContext'
 import './assets/styles.css'
 import { v4 as uuidv4 } from 'uuid'
+const _ = require('underscore')
 
 const Cart = () => {
   const { state, removeFromCart, addToCart } = useContext(AppContext)
@@ -13,8 +14,20 @@ const Cart = () => {
   const handleSumTotal = () => {
     const cantidad = state.cart.length
     let total = 0
+    let arrayDescount = []
     for (let n = 0; n < cantidad; n++) {
+      arrayDescount.push(state.cart[n].id)
       total += state.cart[n].total
+    }
+    const [discountState] = state.discount
+    let exist = discountState.m
+    exist = exist.sort()
+    arrayDescount = arrayDescount.sort()
+    const existForDiscount = _.isEqual(exist, arrayDescount)
+    if (existForDiscount) {
+      let descuento = (discountState.discount)
+      descuento = descuento.toFixed(2)
+      total = total - descuento
     }
     return total
   }
@@ -37,6 +50,9 @@ const Cart = () => {
             </li>
             <li>
               Price: ${x.price}
+            </li>
+            <li>
+              Total: ${x.total}
             </li>
           </ul>
           <div className="movies__cart-card-quantity">
